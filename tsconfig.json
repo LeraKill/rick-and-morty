@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -16,19 +20,46 @@
     "incremental": true,
     "baseUrl": "src",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/layout/*": ["layout/*"],
-      "@/pages/*": ["pages/*"],
-      "@/types/*": ["types/*"],
-      "@/constants/*": ["lib/constants/*"],
-      "@/models/*": ["lib/models/*"],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/layout/*": [
+        "layout/*"
+      ],
+      "@/pages/*": [
+        "pages/*"
+      ],
+      "@/types/*": [
+        "types/*"
+      ],
+      "@/constants/*": [
+        "lib/constants/*"
+      ],
+      "@/models/*": [
+        "lib/models/*"
+      ],
       //      "@/function/*": ["lib/services/*"],
-      "@/styles/*": ["styles/*"],
-      "@/fonts/*": ["assets/fonts/*"],
-      "@/icon/*": ["assets/Icon/*"],
-      "@/image/*": ["assets/Image/*"]
+      "@/styles/*": [
+        "styles/*"
+      ],
+      "@/fonts/*": [
+        "assets/fonts/*"
+      ],
+      "@/icon/*": [
+        "assets/Icon/*"
+      ],
+      "@/image/*": [
+        "assets/Image/*"
+      ]
     }
   },
   //   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ]
 }
