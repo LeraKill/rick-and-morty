@@ -1,3 +1,4 @@
+import "../styles/globals.css";
 import "normalize.css";
 import type { AppProps } from "next/app";
 import MainLayout from "../layout/MainLayout";
