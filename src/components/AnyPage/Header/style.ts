@@ -70,18 +70,40 @@ const HeaderLogoSC = styled("div")`
   height: 49px;
 `;
 
-const HeaderNavSC = styled("nav")`
+interface INavProps {
+  isMobile: boolean;
+  isOpenBurger: boolean;
+}
+
+const HeaderNavSC = styled("nav")<INavProps>`
   display: flex;
   align-items: center;
+  flex-direction: ${({ isMobile }) => (isMobile ? "column" : "row")};
+  margin-top: ${({ isMobile }) => (isMobile ? "250px" : "0px")};
+  width: ${({ isMobile }) => (isMobile ? "100%" : "")};
+  height: ${({ isMobile }) => (isMobile ? "100%" : "")};
+  background-color: ${({ isMobile }) => (isMobile ? "white" : "none")};
+  transition: transform 0.5s ease-in-out;
+  transform: ${({ isOpenBurger, isMobile }) =>
+    isMobile
+      ? isOpenBurger
+        ? "translate(0)"
+        : "translate(-150%)"
+      : "translate(0)"};
 `;
-const HeaderLinkWrapperSC = styled("div")`
+
+interface ILinkProps {
+  isMobile: boolean;
+}
+
+const HeaderLinkWrapperSC = styled("div")<ILinkProps>`
   &:not(:last-child) {
-    margin-right: 24px;
+    margin: ${({ isMobile }) => (isMobile ? "0 0 48px 0" : "0 24px 0 0 ")};
   }
 `;
-const HeaderLinkSC = styled("a")`
+const HeaderLinkSC = styled("a")<ILinkProps>`
   font-family: "Karla", sans-serif;
-  font-size: 18px;
+  font-size: ${({ isMobile }) => (isMobile ? "24px" : "18px ")};
   transition: all 0.3s ease 0s;
   &:hover {
     text-shadow: 0px 0px 5px ${({ theme }) => theme.colors.green};

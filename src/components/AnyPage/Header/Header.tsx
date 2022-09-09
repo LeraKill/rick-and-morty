@@ -21,12 +21,12 @@ const Header: FC = () => {
               <Logo />
             </HeaderLogoSC>
           </HeaderLogoWrapperSC>
-          <HeaderNavSC>
+          <HeaderNavSC isMobile={isMobile} isOpenBurger={openBurger}>
             {HeaderMenuArray &&
               HeaderMenuArray.map((item) => {
                 return (
-                  <HeaderLinkWrapperSC key={item.id}>
-                    <HeaderLinkSC href={item.href}>
+                  <HeaderLinkWrapperSC isMobile={isMobile} key={item.id}>
+                    <HeaderLinkSC isMobile={isMobile} href={item.href}>
                       {item.category}
                     </HeaderLinkSC>
                   </HeaderLinkWrapperSC>
