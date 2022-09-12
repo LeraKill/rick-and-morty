@@ -3,6 +3,11 @@ import styled from "styled-components";
 const HeaderSC = styled("header")`
   box-shadow: 0px 3px 6px 4px ${({ theme }) => theme.colors.lightBlack};
   margin-bottom: 26px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
 `;
 
 interface IProps {
@@ -90,6 +95,7 @@ const HeaderNavSC = styled("nav")<INavProps>`
         ? "translate(0)"
         : "translate(-150%)"
       : "translate(0)"};
+  /* background-color: red; */
 `;
 
 interface ILinkProps {
