@@ -2,7 +2,7 @@ export const themeObj = {
   colors: {
     main: "#081F32",
     mainOpacity: "rgba(8, 31, 50, .6)",
-    lightBlack: "rgba(0, 0, 0, 0.05)",
+    lightBlack: "rgba(0, 0, 0, 0.5)",
     gray: "#E5E5E5",
     darkGray: "#757575",
     blue: "#2196F3",
