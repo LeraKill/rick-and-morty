@@ -23,10 +23,13 @@ const CharactersImgBlockSC = styled("div")`
   overflow: hidden;
 `;
 const CharactersImgSC = styled("img")`
+  width: 100%;
+  height: 100%;
+
   position: absolute;
   top: 0;
   left: 0;
-  object-fit: contain;
+  object-fit: cover;
 `;
 const CharactersInfoSC = styled("div")`
   padding: 12px 16px;

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 const HeaderSC = styled("header")`
-  box-shadow: 0px 3px 6px 4px ${({ theme }) => theme.colors.lightBlack};
+  box-shadow: 0px 3px 10px 3px rgba(0, 0, 0, 0.1);
   margin-bottom: 26px;
   width: 100%;
   position: fixed;
@@ -58,6 +58,17 @@ const HeaderContainerSC = styled("div")`
   max-width: 1020px;
   margin: 0 auto;
   padding: 0 10px;
+  position: relative;
+  &:before {
+    content: "";
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
 `;
 
 const HeaderContentSC = styled("div")`
@@ -80,14 +91,15 @@ interface INavProps {
   isOpenBurger: boolean;
 }
 
-const HeaderNavSC = styled("nav")<INavProps>`
-  display: flex;
-  align-items: center;
-  flex-direction: ${({ isMobile }) => (isMobile ? "column" : "row")};
-  margin-top: ${({ isMobile }) => (isMobile ? "250px" : "0px")};
+const HeaderMenuSC = styled("nav")<INavProps>`
+  margin-top: ${({ isMobile }) => (isMobile ? "60px" : "0px")};
   width: ${({ isMobile }) => (isMobile ? "100%" : "")};
   height: ${({ isMobile }) => (isMobile ? "100%" : "")};
+  position: ${({ isMobile }) => (isMobile ? "fixed" : "")};
   background-color: ${({ isMobile }) => (isMobile ? "white" : "none")};
+  top: 0;
+  left: 0;
+  overflow: ${({ isMobile }) => (isMobile ? "auto" : "")};
   transition: transform 0.5s ease-in-out;
   transform: ${({ isOpenBurger, isMobile }) =>
     isMobile
@@ -95,22 +107,28 @@ const HeaderNavSC = styled("nav")<INavProps>`
         ? "translate(0)"
         : "translate(-150%)"
       : "translate(0)"};
-  /* background-color: red; */
 `;
 
+const HeaderMenuListSC = styled("ul")<INavProps>`
+  display: flex;
+  align-items: center;
+  flex-direction: ${({ isMobile }) => (isMobile ? "column" : "row")};
+`;
 interface ILinkProps {
   isMobile: boolean;
 }
 
-const HeaderLinkWrapperSC = styled("div")<ILinkProps>`
+const HeaderMenuItemSC = styled("li")<ILinkProps>`
   &:not(:last-child) {
     margin: ${({ isMobile }) => (isMobile ? "0 0 48px 0" : "0 24px 0 0 ")};
   }
 `;
-const HeaderLinkSC = styled("a")<ILinkProps>`
+
+const HeaderMenuLinkSC = styled("a")<ILinkProps>`
   font-family: "Karla", sans-serif;
   font-size: ${({ isMobile }) => (isMobile ? "24px" : "18px ")};
   transition: all 0.3s ease 0s;
+  display: inline-block;
   &:hover {
     text-shadow: 0px 0px 5px ${({ theme }) => theme.colors.green};
   }
@@ -124,7 +142,8 @@ export const useHeaderStyle = () => ({
   HeaderContentSC,
   HeaderLogoWrapperSC,
   HeaderLogoSC,
-  HeaderNavSC,
-  HeaderLinkWrapperSC,
-  HeaderLinkSC,
+  HeaderMenuSC,
+  HeaderMenuListSC,
+  HeaderMenuItemSC,
+  HeaderMenuLinkSC,
 });
