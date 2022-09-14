@@ -114,25 +114,6 @@ const HeaderMenuListSC = styled("ul")<INavProps>`
   align-items: center;
   flex-direction: ${({ isMobile }) => (isMobile ? "column" : "row")};
 `;
-interface ILinkProps {
-  isMobile: boolean;
-}
-
-const HeaderMenuItemSC = styled("li")<ILinkProps>`
-  &:not(:last-child) {
-    margin: ${({ isMobile }) => (isMobile ? "0 0 48px 0" : "0 24px 0 0 ")};
-  }
-`;
-
-const HeaderMenuLinkSC = styled("a")<ILinkProps>`
-  font-family: "Karla", sans-serif;
-  font-size: ${({ isMobile }) => (isMobile ? "24px" : "18px ")};
-  transition: all 0.3s ease 0s;
-  display: inline-block;
-  &:hover {
-    text-shadow: 0px 0px 5px ${({ theme }) => theme.colors.green};
-  }
-`;
 
 export const useHeaderStyle = () => ({
   HeaderSC,
@@ -144,6 +125,4 @@ export const useHeaderStyle = () => ({
   HeaderLogoSC,
   HeaderMenuSC,
   HeaderMenuListSC,
-  HeaderMenuItemSC,
-  HeaderMenuLinkSC,
 });
