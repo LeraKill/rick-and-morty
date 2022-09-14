@@ -21,18 +21,20 @@ const Header: FC = () => {
               <Logo />
             </HeaderLogoSC>
           </HeaderLogoWrapperSC>
-          <HeaderNavSC isMobile={isMobile} isOpenBurger={openBurger}>
-            {HeaderMenuArray &&
-              HeaderMenuArray.map((item) => {
-                return (
-                  <HeaderLinkWrapperSC isMobile={isMobile} key={item.id}>
-                    <HeaderLinkSC isMobile={isMobile} href={item.href}>
-                      {item.category}
-                    </HeaderLinkSC>
-                  </HeaderLinkWrapperSC>
-                );
-              })}
-          </HeaderNavSC>
+          <HeaderMenuSC isMobile={isMobile} isOpenBurger={openBurger}>
+            <HeaderMenuListSC isMobile={isMobile} isOpenBurger={openBurger}>
+              {HeaderMenuArray &&
+                HeaderMenuArray.map((item) => {
+                  return (
+                    <HeaderMenuItemSC key={item.id} isMobile={isMobile}>
+                      <HeaderMenuLinkSC isMobile={isMobile} href={item.href}>
+                        {item.category}
+                      </HeaderMenuLinkSC>
+                    </HeaderMenuItemSC>
+                  );
+                })}
+            </HeaderMenuListSC>
+          </HeaderMenuSC>
           {isMobile && (
             <HeaderMenuBurgerSC onClick={handleOpenBurger} isOpen={openBurger}>
               <HeaderMenuBurgerSpanSC isOpen={openBurger} />
@@ -52,9 +54,10 @@ const {
   HeaderContentSC,
   HeaderLogoWrapperSC,
   HeaderLogoSC,
-  HeaderNavSC,
-  HeaderLinkWrapperSC,
-  HeaderLinkSC,
+  HeaderMenuSC,
+  HeaderMenuListSC,
+  HeaderMenuItemSC,
+  HeaderMenuLinkSC,
 } = useHeaderStyle();
 
 export default React.memo(Header);
