@@ -1,32 +1,52 @@
-import { ICharactersProps } from "@/types/types";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import CharactersItem from "./CharactersItem/CharactersItem";
 import { useCharactersStyle } from "./style";
-import { useCharacters } from "./useCharacters";
+import CharacterBlockImg from "../../assets/Icon/CharactersImg.svg";
+import FilterByName from "../AnyPage/FilterByName/FilterByName";
 
-const Characters: FC<ICharactersProps> = ({ characters }) => {
-  const { results, handleLoadMore } = useCharacters({ characters });
+import { fetchCharacters } from "@/store/reducers/characterSlice/asyncThunk/characterApi";
+import { useAppDispatch, useAppSelector } from "@/hooks/useReduxHooks";
+import { useFormContext } from "react-hook-form";
+
+const Characters: FC = () => {
+  const dispatch = useAppDispatch();
+  const { characters, isLoading } = useAppSelector(
+    (state) => state.characterSlice,
+  );
+
+  useEffect(() => {
+    dispatch(fetchCharacters());
+  }, []);
+
+  // const { handleSubmit } = useFormContext();
 
   return (
     <>
       <CharactersContainerSC>
-        Characters
+        <CharactersBlockImgSC>
+          <CharacterBlockImg />
+        </CharactersBlockImgSC>
+        <FilterByName />
         <CharactersContentSC>
-          {results &&
-            results.map((item) => (
+          {characters &&
+            characters.map((item) => (
               <CharactersItem key={item.id} characters={item} />
             ))}
         </CharactersContentSC>
-        <CharactersBtn type="button" onClick={handleLoadMore}>
+        {/* <CharactersBtn type="button" onClick={handleLoadMore}>
           Load more
-        </CharactersBtn>
+        </CharactersBtn> */}
       </CharactersContainerSC>
       <ScrollToTop />
     </>
   );
 };
 
-const { CharactersContainerSC, CharactersContentSC, CharactersBtn } =
-  useCharactersStyle();
+const {
+  CharactersContainerSC,
+  CharactersBlockImgSC,
+  CharactersContentSC,
+  CharactersBtn,
+} = useCharactersStyle();
 export default React.memo(Characters);

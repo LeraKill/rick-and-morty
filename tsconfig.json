@@ -25,6 +25,7 @@
       "@/models/*": ["lib/models/*"],
       //      "@/function/*": ["lib/services/*"],
       "@/styles/*": ["styles/*"],
+      "@/store/*": ["store/*"],
       "@/fonts/*": ["assets/fonts/*"],
       "@/icon/*": ["assets/Icon/*"],
       "@/image/*": ["assets/Image/*"]
