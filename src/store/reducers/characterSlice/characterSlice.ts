@@ -22,12 +22,14 @@ interface ICharacterSlice {
     pages: number;
     prev: object | null;
   } | null;
+  page: number;
   isLoading: boolean;
 }
 
 const initialState: ICharacterSlice = {
   characters: [],
   info: null,
+  page: 1,
   isLoading: false,
 };
 

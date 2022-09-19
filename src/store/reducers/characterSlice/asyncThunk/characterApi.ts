@@ -3,10 +3,11 @@ import { AppDispatch, RootState } from "@/store/store";
 
 export const fetchCharacters = createAsyncThunk(
   "characterSlice/getCharacters",
-  async (data, { rejectWithValue }) => {
+  async (data, { getState, rejectWithValue }) => {
+    const { page } = getState().characterSlice;
     try {
       const res = await fetch(
-        "https://rickandmortyapi.com/api/character?page=1",
+        ` https://rickandmortyapi.com/api/character?page=${page}`,
       );
 
       if (res.status) {
