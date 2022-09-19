@@ -9,6 +9,7 @@ export const themeObj = {
     lightBlue: "#F2F9FE",
     lightBlueTwo: "#D7ECFC",
     green: "#5eff78",
+    white: "#fff",
   },
   media: {
     extraLarge: "(max-width: 1200px)",
