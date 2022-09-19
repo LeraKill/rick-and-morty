@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-const CharactersContainerSC = styled("section")``;
+const CharactersContainerSC = styled("section")`
+  margin: 0 0 44px 0;
+`;
 const CharactersContentSC = styled("div")`
   display: flex;
   flex-wrap: wrap;
@@ -14,6 +16,12 @@ const CharactersItemSC = styled("div")`
   overflow: hidden;
   box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.14),
     0px 3px 4px 0px rgba(0, 0, 0, 0.12), 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease 0s;
+  &:hover {
+    box-shadow: 0px 2px 4px 0 ${({ theme }) => theme.colors.green},
+      0px 3px 4px 0px ${({ theme }) => theme.colors.green},
+      0px 1px 5px 0px ${({ theme }) => theme.colors.green};
+  }
 `;
 
 const CharactersImgBlockSC = styled("div")`
@@ -47,6 +55,25 @@ const CharactersTypeSC = styled("p")`
   color: ${({ theme }) => theme.colors.lightBlack};
 `;
 
+const CharactersBtn = styled("button")`
+  display: block;
+  width: 154px;
+  margin: 34px auto 0;
+  box-shadow: 0px 2px 4px 0 rgba(0, 0, 0, 0.14),
+    0px 3px 4px 0px rgba(0, 0, 0, 0.12), 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  color: ${({ theme }) => theme.colors.blue};
+  font-size: 14px;
+  letter-spacing: 1.25px;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 10px 0;
+  background-color: ${({ theme }) => theme.colors.lightBlue};
+  transition: background-color 0.3s ease 0s;
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.lightBlueTwo};
+  }
+`;
+
 export const useCharactersStyle = () => ({
   CharactersContainerSC,
   CharactersContentSC,
@@ -56,4 +83,5 @@ export const useCharactersStyle = () => ({
   CharactersInfoSC,
   CharactersNameSC,
   CharactersTypeSC,
+  CharactersBtn,
 });
