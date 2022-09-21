@@ -5,6 +5,7 @@ export const themeObj = {
     lightBlack: "rgba(0, 0, 0, 0.5)",
     gray: "#E5E5E5",
     darkGray: "#757575",
+    grayThree: "#6E798C",
     blue: "#2196F3",
     lightBlue: "#F2F9FE",
     lightBlueTwo: "#D7ECFC",
