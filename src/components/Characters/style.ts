@@ -2,11 +2,30 @@ import styled from "styled-components";
 
 const CharactersContainerSC = styled("section")`
   margin: 0 0 44px 0;
+  @media (max-width: 600px) {
+    margin: 0 0 20px 0;
+    width: 100%;
+  }
 `;
+
+const CharactersBlockImgSC = styled("div")`
+  width: 600px;
+  height: 200px;
+  margin: 0 auto;
+  @media (max-width: 600px) {
+    width: 312px;
+    height: 104px;
+  }
+`;
+
 const CharactersContentSC = styled("div")`
   display: flex;
   flex-wrap: wrap;
   margin: 0 -12px;
+  @media (max-width: 600px) {
+    flex-direction: column;
+    margin: 0;
+  }
 `;
 const CharactersItemSC = styled("div")`
   width: 240px;
@@ -22,6 +41,10 @@ const CharactersItemSC = styled("div")`
       0px 3px 4px 0px ${({ theme }) => theme.colors.green},
       0px 1px 5px 0px ${({ theme }) => theme.colors.green};
   }
+  @media (max-width: 600px) {
+    width: 100%;
+    margin: 0px 0px 24px 0px;
+  }
 `;
 
 const CharactersImgBlockSC = styled("div")`
@@ -29,6 +52,9 @@ const CharactersImgBlockSC = styled("div")`
   width: 100%;
   height: 168px;
   overflow: hidden;
+  @media (max-width: 600px) {
+    height: 232px;
+  }
 `;
 const CharactersImgSC = styled("img")`
   width: 100%;
@@ -76,6 +102,7 @@ const CharactersBtn = styled("button")`
 
 export const useCharactersStyle = () => ({
   CharactersContainerSC,
+  CharactersBlockImgSC,
   CharactersContentSC,
   CharactersItemSC,
   CharactersImgBlockSC,

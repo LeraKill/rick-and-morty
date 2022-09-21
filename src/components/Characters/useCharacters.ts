@@ -1,42 +1,26 @@
-import { defaultEndpoint } from "@/pages/index";
-import { ICharactersProps } from "@/types/types";
-import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "@/hooks/useReduxHooks";
+import {
+  fetchCharacters,
+  fetchShowMoreCharacters,
+} from "@/store/reducers/characterSlice/asyncThunk/characterApi";
+import { useEffect } from "react";
 
-export const useCharacters = ({ characters }: ICharactersProps) => {
-  const { info, results: defaultResults = [] } = characters;
-  const [results, updateResults] = useState(defaultResults);
-  const [page, updatePage] = useState({
-    ...info,
-    current: defaultEndpoint,
-  });
-
-  const { current } = page;
+export const useCharacters = () => {
+  const dispatch = useAppDispatch();
+  const { info, characters, isLoading, page } = useAppSelector(
+    (state) => state.characterSlice,
+  );
 
   useEffect(() => {
-    if (current === defaultEndpoint) return;
+    dispatch(fetchCharacters(page));
+  }, []);
 
-    const request = async () => {
-      const res = await fetch(current);
-      const nextData = await res.json();
-      updatePage({ current, ...nextData.info });
-      if (!nextData.info?.prev) {
-        updateResults(nextData.results);
-        return;
-      }
-      updateResults((prev) => {
-        return [...prev, ...nextData.results];
-      });
-    };
-    request();
-  }, [current]);
+  const showMore = () => {
+    dispatch(fetchShowMoreCharacters(page));
+  };
 
-  function handleLoadMore() {
-    updatePage((prev) => {
-      return { ...prev, current: page?.next };
-    });
-  }
   return {
-    results,
-    handleLoadMore,
+    characters,
+    showMore,
   };
 };

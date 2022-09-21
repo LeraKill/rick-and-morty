@@ -1,24 +1,28 @@
-import { ICharactersProps } from "@/types/types";
 import React, { FC } from "react";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 import CharactersItem from "./CharactersItem/CharactersItem";
 import { useCharactersStyle } from "./style";
+import CharacterBlockImg from "../../assets/Icon/CharactersImg.svg";
+import FilterByName from "../AnyPage/FilterByName/FilterByName";
 import { useCharacters } from "./useCharacters";
 
-const Characters: FC<ICharactersProps> = ({ characters }) => {
-  const { results, handleLoadMore } = useCharacters({ characters });
+const Characters: FC = () => {
+  const { characters, showMore } = useCharacters();
 
   return (
     <>
       <CharactersContainerSC>
-        Characters
+        <CharactersBlockImgSC>
+          <CharacterBlockImg />
+        </CharactersBlockImgSC>
+        <FilterByName />
         <CharactersContentSC>
-          {results &&
-            results.map((item) => (
-              <CharactersItem key={item.id} characters={item} />
+          {characters &&
+            characters.map((item, index) => (
+              <CharactersItem key={`${item.id}_${index}`} characters={item} />
             ))}
         </CharactersContentSC>
-        <CharactersBtn type="button" onClick={handleLoadMore}>
+        <CharactersBtn type="button" onClick={showMore}>
           Load more
         </CharactersBtn>
       </CharactersContainerSC>
@@ -27,6 +31,10 @@ const Characters: FC<ICharactersProps> = ({ characters }) => {
   );
 };
 
-const { CharactersContainerSC, CharactersContentSC, CharactersBtn } =
-  useCharactersStyle();
+const {
+  CharactersContainerSC,
+  CharactersBlockImgSC,
+  CharactersContentSC,
+  CharactersBtn,
+} = useCharactersStyle();
 export default React.memo(Characters);
