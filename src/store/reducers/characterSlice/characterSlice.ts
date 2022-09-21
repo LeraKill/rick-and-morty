@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCharacters } from "./asyncThunk/characterApi";
+import {
+  fetchCharacters,
+  fetchShowMoreCharacters,
+} from "./asyncThunk/characterApi";
 
 interface ICharacterSlice {
   characters: {
@@ -47,10 +50,24 @@ export const characterSlice = createSlice({
     });
     builder.addCase(fetchCharacters.fulfilled, (state, action) => {
       state.characters = [...state.characters, ...action.payload.results];
-      state.info = [...state.characters, action.payload.info];
+      state.info = action.payload.info;
       state.isLoading = false;
+      state.page = state.page + 1;
     });
     builder.addCase(fetchCharacters.rejected, (state) => {
+      state.isLoading = true;
+    });
+
+    builder.addCase(fetchShowMoreCharacters.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(fetchShowMoreCharacters.fulfilled, (state, action) => {
+      state.characters = [...state.characters, ...action.payload.results];
+      state.info = action.payload.info;
+      state.isLoading = false;
+      state.page = state.page + 1;
+    });
+    builder.addCase(fetchShowMoreCharacters.rejected, (state) => {
       state.isLoading = true;
     });
   },
