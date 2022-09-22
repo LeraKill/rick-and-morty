@@ -1,7 +1,7 @@
 # rick-and-morty
 ____
 
-№Getting Started
+#Getting Started
 ____
 Clone the project
 ```
