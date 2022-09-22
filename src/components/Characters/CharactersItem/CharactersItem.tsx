@@ -1,4 +1,4 @@
-import { ICharactersProps } from "@/types/types";
+import Link from "next/link";
 import React, { FC } from "react";
 import { useCharactersStyle } from "../style";
 
@@ -20,16 +20,20 @@ interface ICharactersItemProps {
 }
 
 const CharactersItem: FC<ICharactersItemProps> = ({ characters }) => {
-  const { name, species, image } = characters;
+  const { id, name, species, image } = characters;
   return (
     <CharactersItemSC>
-      <CharactersImgBlockSC>
-        <CharactersImgSC src={image} />
-      </CharactersImgBlockSC>
-      <CharactersInfoSC>
-        <CharactersNameSC>{name}</CharactersNameSC>
-        <CharactersTypeSC>{species}</CharactersTypeSC>
-      </CharactersInfoSC>
+      <Link href="/character/[id]" as={`/character/${id}`}>
+        <a>
+          <CharactersImgBlockSC>
+            <CharactersImgSC src={image} />
+          </CharactersImgBlockSC>
+          <CharactersInfoSC>
+            <CharactersNameSC>{name}</CharactersNameSC>
+            <CharactersTypeSC>{species}</CharactersTypeSC>
+          </CharactersInfoSC>
+        </a>
+      </Link>
     </CharactersItemSC>
   );
 };

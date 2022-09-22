@@ -1,6 +1,5 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import { allReducers } from "@/store/allReducers";
-// import { workAxios } from '@/lib/http';
 
 const api = "https://rickandmortyapi.com/api";
 

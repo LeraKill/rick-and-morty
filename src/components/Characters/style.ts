@@ -1,9 +1,11 @@
 import styled from "styled-components";
 
 const CharactersContainerSC = styled("section")`
-  margin: 0 0 44px 0;
+  width: 100%;
+  max-width: 1020px;
+  margin: 0 auto 44px;
   @media (max-width: 600px) {
-    margin: 0 0 20px 0;
+    margin: 0 auto 20px;
     width: 100%;
   }
 `;

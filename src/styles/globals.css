@@ -12,6 +12,7 @@ body {
   overflow-x: auto;
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  color: #081f32;
 }
 
 .body_blocked {
@@ -32,8 +33,9 @@ body {
 
 main {
   flex-grow: 1;
-  max-width: 1020px;
-  margin: 100px auto 0;
+  /* max-width: 1020px; */
+  /* margin: 100px auto 0; */
+  margin: 100px 0 0 0;
   padding: 0 10px;
 }
 
