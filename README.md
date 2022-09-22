@@ -1,8 +1,7 @@
 # rick-and-morty
-____
 
 # Getting Started
-____
+
 Clone the project
 ```
 https://github.com/LeraKill/rick-and-morty.git
