@@ -1,4 +1,4 @@
-# rick-and-morty
+# rick-and-morty - пет-проект, сейчас в работе
 
 # Getting Started
 
